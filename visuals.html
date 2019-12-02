@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/visuals.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Exo">
+    <style>
+      body {
+        font-family: 'Exo', serif;
+      }
+    </style>
+
+    <script src="../scripts/visuals.js" > </script>
+    <title>Visual Algs</title>
+  </head>
+  <body onload="setGraph()">
+
+    <header>
+      <div class="navBar">
+        <a href="../index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
+        <a href="resume.html">Resume</a>
+        <!-- <a href="games.html">Games!</a> -->
+        <a href="projects.html">Projects</a>
+        <!-- <a href="nerdLane.html">Nerd Lane</a> -->
+        <a href="visuals.html">Visual Algs</a>
+      </div>
+    </header>
+
+    <div class="explanation">
+      <h2>This page is to show some visualization on how some well known algorithms work. Has this been done before? <br> Yes, but really I made this to learn and practice JavaScript. <br>
+      All algs are sorting 300 numbers. I really don't recommend running bubblesort. You'll be there for awhile.</h2>
+
+      <br><br>
+
+      <p>Just in case! <br> Once the sorting alg is running all buttons are disabled so it can't be stopped with the buttons. You can always refresh the page if you really need to kill the program because bubblesort is taking forever. </p>
+    </div>
+
+    <div class="picker">
+      <select class="dropdown" name="" onclick="resetGraph()">
+        <option value="bubblesort" >bubble sort</option>
+        <option value="insertionsort" >insertion sort</option>
+        <option value="mergesort" >merge sort</option>
+        <option value="quicksort">quick sort</option>
+        <option value="heapsort">heap sort</option>
+      </select>
+
+      <!-- <input type="range" min="1" max="117" value="42" class="sortSlider"> -->
+
+      <!-- <textarea name="val" rows="1" cols="1" value="42">42</textarea> -->
+
+      <button type="button" name="run" id="runBtn" class="runButton" onclick="runProg()">Run</button>
+
+      <button type="button" name="reset" id="resetBtn" class="resetButton" onclick="resetGraph()">Reset</button>
+    </div>
+
+    <div class="chart">
+      <canvas id="algcanvas" class="algcanvas"></canvas>
+    </div>
+
+  </body>
+</html>
