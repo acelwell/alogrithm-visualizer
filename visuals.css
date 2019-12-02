@@ -1,0 +1,156 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header
+{
+  background: #6b6b6b;
+}
+
+header > h1
+{
+  color: #4286f4;
+  text-align: center;
+  padding-top: 17px;
+  padding-bottom: 17px;
+
+}
+
+
+
+.navBar
+{
+
+  text-align: center;
+  background-color: #181e1d;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navBar > a
+{
+  padding: 17px;
+  font-size: 17px;
+
+  border-color: white;
+  color: white;
+
+  text-decoration: none;
+}
+
+.navBar a:hover
+{
+  background-color: white;
+  color: #084435;
+}
+
+p
+{
+  text-align: center;
+  padding: 10px;
+  font-size: 22px;
+}
+
+
+body
+{
+  background-color: #a6af8c;
+  /* background-image: linear-gradient(#4f4e4e, white); */
+  background-repeat: no-repeat;
+
+}
+
+.explanation
+{
+  text-align: center;
+  padding: 17px;
+}
+
+.picker
+{
+  width: 66.6%;
+  background-color: #111111;
+  text-align: center;
+  margin: auto;
+
+
+}
+
+.dropdown
+{
+  padding: 17px;
+  background-color: #111111;
+  border: none;
+  color: white;
+  font-size: 17px;
+}
+
+.dropdown option
+{
+  text: white;
+  padding: 17px 17px;
+  display: block;
+}
+
+.sortSlider {
+  -webkit-appearance: none;
+  /* width: 100%; */
+  height: 7px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-left: 17px;
+}
+
+.sortSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.runButton
+{
+  margin-left: 17px;
+  padding: inherit;
+  background-color: #111111;
+  color: white;
+  border: none;
+  font-size: 17px;
+}
+
+.resetButton
+{
+  margin-left: 17px;
+  padding: inherit;
+  background-color: #111111;
+  color: white;
+  border: none;
+  font-size: 17px;
+}
+
+.chart
+{
+  margin: auto;
+  width: 66.6%;
+  /* background-color: white; */
+  /* padding-top: 17px; */
+}
+
+.algcanvas
+{
+  width: 100%;
+  height: 666px;
+  border: 3px solid orange;
+  background-color: #242424;
+
+}
