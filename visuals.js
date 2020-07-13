@@ -1,16 +1,19 @@
 // sorting algs are not my IP, except for bubble sort
-// that one is easy to remeber
+// that one is easy to remember
 // the point of the this code is to practice JS not sorting algs.
 
 
 let ctx;
 let canvas;
-let vals = new Array(300);
+let vals = new Array(100);
 let i = 0;
 let j = 0;
 let sleepyTime = 11;
 let kill = false;
+let gap = 3;
 
+
+// turn all buttons off 
 function killButtons()
 {
   kill = true;
@@ -18,6 +21,7 @@ function killButtons()
   document.getElementById("resetBtn").disabled = true;
 }
 
+// and back on
 function allowButtons()
 {
   kill = false;
@@ -25,13 +29,14 @@ function allowButtons()
   document.getElementById("resetBtn").disabled = false;
 }
 
+// reset and generate new values to be sorted by an algorithm and then redraw the graph
 function resetGraph()
 {
   if(!kill)
   {
     canvas = document.getElementById("algcanvas");
     ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#117115"
+    ctx.fillStyle = "#000"
     let width = canvas.width;
     let height = canvas.height;
     ctx.fillRect(0,0,width,height);
@@ -41,16 +46,17 @@ function resetGraph()
     {
       let val = Math.random() * height;
       vals[i] = val;
-      drawLine(ctx, i, val);
+      drawLine(ctx, i * gap, val);
     }
   }
 }
 
+// runs on page load to initially set the graph
 function setGraph()
 {
   canvas = document.getElementById("algcanvas");
   ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#117115"
+  ctx.fillStyle = "#000"
   let width = canvas.width;
   let height = canvas.height;
   ctx.fillRect(0,0,width,height);
@@ -60,39 +66,43 @@ function setGraph()
   {
     let val = Math.random() * height;
     vals[i] = val;
-    drawLine(ctx, i, val);
+    drawLine(ctx, i * gap, val);
   }
 }
 
+// draws the updated graph at every iteration of a sorting algorithm
 function drawGraph()
 {
-  // console.log("getting ready to draw graph");
   canvas = document.getElementById("algcanvas");
   ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#117115"
+  ctx.fillStyle = "#000"
   let width = canvas.width;
   let height = canvas.height;
   ctx.fillRect(0,0,width,height);
   ctx.fillStyle = "#ffffff"
   for(let i = 0; i < vals.length; i++)
   {
-    drawLine(ctx, i, vals[i]);
+    drawLine(ctx, i * gap, vals[i]);
   }
 
 }
 
+// canvas, start, height
 function drawLine(ctx, x, y)
 {
 
-  ctx.fillRect(x,0,1,y);
+  ctx.fillRect(x,0,gap - 1,y);
+
+  ctx.ilneWidth = 1;
+
+  ctx.strokeRect(x,0,gap,y);
 }
 
 
-
+// runs an algorithm based on user input
 async function runProg()
 {
 
-  console.log("lets run this bisk");
   let choice = document.getElementsByClassName('dropdown')[0].value;
 
   if(choice === "bubblesort")
@@ -118,7 +128,6 @@ async function runProg()
   {
     i = j = 0;
     await runHeapSort(vals);
-    // console.log(vals);
   }
 }
 
@@ -262,6 +271,8 @@ async function merge(vals, l, m, r)
   await drawGraph();
   await sleep(sleepyTime);
 
+  allowButtons();
+
 }
 
 async function runQuickSort(arr, start, end)
@@ -283,10 +294,8 @@ async function runQuickSort(arr, start, end)
   await drawGraph();
   await sleep(sleepyTime);
 
-  if(start === 0 && end === 299)
-  {
-    allowButtons();
-  }
+
+  allowButtons();
 
 }
 
@@ -310,56 +319,7 @@ async function partition(arr, start, end)
   return pivotIndex;
 }
 
-// async function runHeapSort(arr)
-// {
-//   //console.log("running heap sort");
-//   let n = arr.length;
-//
-//   for (let i = n/2 - 1; i >= 0; i--)
-//   {
-//     //console.log(i);
-//     await heapify(arr, n, i);
-//   }
-//
-//   for(let i = n - 1; i >= 0; i--)
-//   {
-//     await swap(arr, 0, i);
-//     await drawGraph();
-//     await sleep(sleepyTime);
-//
-//     heapify(arr, i, 0);
-//   }
-//
-//   await drawGraph();
-//   await sleep(sleepyTime);
-// }
-//
-// async function heapify(arr, n, i)
-// {
-//
-//   let largest = i;
-//   let l = 2*i + 1;
-//   let r = 2*i + 2;
-//
-//   if(l < n && arr[l] > arr[largest])
-//   {
-//     largest = l;
-//   }
-//
-//   if(r < n && arr[r] > arr[largest])
-//   {
-//     largest = r;
-//   }
-//
-//   if(largest != i)
-//   {
-//     swap(arr, i, largest);
-//     await drawGraph();
-//     await sleep(sleepyTime);
-//
-//     heapify(arr, n, largest);
-//   }
-// }
+
 
 async function runHeapSort(array)
 {
@@ -426,6 +386,7 @@ async function heapify(heap, i, max) {
   }
 }
 
+// pauses the program for some amount of time so the user can actually see what is happening
 function sleep(ms)
 {
   return new Promise(resolve => setTimeout(resolve, ms));
